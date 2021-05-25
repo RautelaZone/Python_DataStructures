@@ -1,11 +1,12 @@
+# Class to create a node
 class Node:
     def __init__(self, data):
         self.data = data
         self.ref = None
 
 
+# Class to create different methods of Linked List
 class LinkedList:
-
     # Empty List
     def __init__(self):
         self.head = None
@@ -22,7 +23,7 @@ class LinkedList:
                 n = n.ref
 
     # Adding element at the beginning
-    def add_element_at_beginning(self, data):
+    def insert_element_at_beginning(self, data):
         new_node = Node(data)
         new_node.ref = self.head
         self.head = new_node
@@ -34,7 +35,7 @@ class LinkedList:
     2) If linked list is not empty then need to traverse to the end and write code accordingly    
     """
 
-    def add_element_at_end(self, data):
+    def insert_element_at_end(self, data):
         new_node = Node(data)
         n = self.head
         if n is None:
@@ -58,15 +59,15 @@ class LinkedList:
     3) happy path-- add element after x
     '''
 
-    def add_after_given_element(self, data, x):
+    def insert_after_given_element(self, data, x):
 
         n = self.head
-        while n is not None:
+        while n.ref is not None:
             if n.data == x:
                 break
             n = n.ref
-        if n is None:
-            print("Node is not present in the Linked List!")
+        if n.ref is None:
+            print(f"Node {x} is not present in the Linked List!")
             return
         else:
             new_node = Node(data)
@@ -85,7 +86,7 @@ class LinkedList:
     5) happy path-- add element before x
     '''
 
-    def add_before_given_element(self, data, x):
+    def insert_before_given_element(self, data, x):
         n = self.head
         if n is None:
             print("Linked List is empty!")
@@ -102,17 +103,26 @@ class LinkedList:
                     break
                 n = n.ref
             if n.ref is None:
-                print("Node is not present in the Linked List!")
+                print(f"Node {x} is not present in the Linked List!")
             else:
                 # LL.add_after_given_element()
                 new_node = Node(data)
                 new_node.ref = n.ref
                 n.ref = new_node
+                
+    # Inserting element on an empty Linked List
+    def insert_in_empty_LL(self, data):
+        if self.head is None:
+            new_node = Node(data)
+            self.head = new_node
+        else:
+            print("Linked List is not empty!")
 
 
 LL = LinkedList()
-LL.add_element_at_beginning(10)
-LL.add_element_at_end(100)
-LL.add_before_given_element(50,100)
-LL.add_after_given_element(60,50)
+LL.insert_in_empty_LL(50)
+LL.insert_element_at_beginning(20)
+LL.insert_element_at_end(100)
+LL.insert_before_given_element(80,100)
+LL.insert_after_given_element(50,80)
 LL.printLinkedList()
