@@ -1,3 +1,12 @@
+"""
+List should be sorted to apply Binary Search
+Divide and conquer in nature
+Time Complexity: O(log2N)
+Best Time Complexity: O(1)
+Worst Time Complexity: log2N
+Space Complexity: O(1)
+"""
+
 l1 = [1, 2, 3, 5, 7]
 l1.sort()
 low = 0
